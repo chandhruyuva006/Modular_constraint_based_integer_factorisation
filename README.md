@@ -9,42 +9,35 @@ The central conjecture — the **Semiprime Modular Restriction Conjecture (SMRC)
 
 ---
 
-## 🧠 Theoretical Foundation
-For any odd semiprime \( N = p \times q \):
-
-\[
-p + q \equiv r_m \pmod{m}, \quad \text{where } r_m \in R_m
-\]
-
-- \( R_m \) is a **restricted residue set**, deterministically derivable from \( N \mod m \).  
-- By combining multiple moduli \( m_1, m_2, \dots, m_k \), one constructs a **system of congruences** that uniquely encodes the true factor sum \( S_N \).  
-- Once \( S_N \) is identified, the factors are recovered via the quadratic equation:
-
-\[
-x^2 - S_Nx + N = 0
-\]
-
-The system theoretically achieves completeness when the combined CRT modulus exceeds \( N \), guaranteeing unique factor recovery.
-
----
-
 ## ⚙️ Implementation
 The entire framework is implemented in **pure Python (standard library only)** — no external dependencies are required.
+Once the theory (just a simple modular math with a matrix) is understood, then the implementation is pretty straightforward. 
 
 ### Core Modules
-| File | Description |
-|------|--------------|
-| `signature_generator.py` | Generates modular signatures \( R_m \) for chosen moduli |
-| `factorization_engine.py` | Performs factorization using precomputed modular signatures and CRT combination |
-| `utils.py` | Contains helper functions for modular arithmetic, CRT, and result formatting |
-| `data/signatures/` | Directory storing precomputed modular signature JSON files |
-| `results/` | Contains empirical test results and runtime data |
+# use the stacked mods Use this.py file and mod_signature_synthetic.py or ipynb.
+
 
 ---
 
 ## 🧩 Workflow Summary
 ### **Step 1: Precompute Modular Signatures**
 This step constructs and stores residue–constraint mappings for each modulus `m`:
+Using the mod_signature_synthetic.py if you need to tweak with other moduli.
+Moduli upto 510510 was tested. but the file sizes are huge. that is the only concern
+I am aware of the better strategies are there to reduce the file size and even 
+on the fly signature generation for small moduli. but considering the file sizes 
+I think we can safely use 2310 signature. the primorial 30030 file is 60 MB.
+But stacking the various smaller m leads to M_eff upto 177657480 in several cases.
 
-```bash
-python signature_generator.py
+
+### **Step 2: Factorisation**
+
+# Use the stacked mods Use this.py file
+### can use other file but need to edit a few logics and the files dont communicate 
+### to each other except the txt
+### files and the stacked mods Use this.py
+### in a Dell Inspiron 3558 i3 5005U upto 18 digit semiprimes can be factored under 
+### a second in this crude implementation and 
+feel free to suggest some improvements. 
+
+
