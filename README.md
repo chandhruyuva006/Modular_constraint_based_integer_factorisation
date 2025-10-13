@@ -1,6 +1,6 @@
 # Modular Patterns in Semiprimes: Deterministic Congruence Framework for Factorization
 
-## 📘 Overview
+##  Overview
 This repository accompanies the paper  
 **“Modular Patterns in Semiprimes: Empirical Observations and Conjectures on Factor Sums and Deterministic Congruence Patterns in Semiprimes Enabling Optimised Factorization.”**
 
@@ -9,17 +9,17 @@ The central conjecture — the **Semiprime Modular Restriction Conjecture (SMRC)
 
 ---
 
-## ⚙️ Implementation
+##  Implementation
 The entire framework is implemented in **pure Python (standard library only)** — no external dependencies are required.
 Once the theory (just a simple modular math with a matrix) is understood, then the implementation is pretty straightforward. 
 
-### Core Modules
+### Files
 # use the stacked mods Use this.py file and mod_signature_synthetic.py or ipynb.
 
 
 ---
 
-## 🧩 Workflow Summary
+##  Workflow Summary
 ### **Step 1: Precompute Modular Signatures**
 This step constructs and stores residue–constraint mappings for each modulus `m`:
 Using the mod_signature_synthetic.py if you need to tweak with other moduli.
