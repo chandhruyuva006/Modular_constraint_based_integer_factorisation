@@ -1,3 +1,17 @@
+# This file is part of the Integer Factorisation project.
+# 
+# Integer Factorisation project is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+#  any later version.
+#
+# Integer Factorisation project is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+
+
 import math
 import time
 import ast
@@ -8,6 +22,20 @@ from tabulate import tabulate
 from math import gcd
 from functools import reduce
 
+
+"""
+###############################################################################
+The current code is a crude product from the initial analysis and completely
+limited by my understanding of math and python concepts. Acidically a Biology major.
+But is should complete the run more than not. It is just an accelerated fermat like 
+method with a better if (residue in allowed residue) loop loop loop. 
+I welcome anyone who could understand the constraints and help me optimise the code. 
+                                    Thank You. 
+############################################################################### 
+"""
+# modinv never failed during the 1000s of runs. But may fail sometime due to the 
+# combination of two incompatible composite moduli.
+# we can stack any moduli but primorial moduli filters better.
 def modinv(a, m):
     """
     Compute modular inverse of a modulo m, using Extended Euclidean Algorithm.
@@ -67,7 +95,7 @@ def merge_residues(M1, R1, M2, R2):
 
 # ===== Example usage =====
 
-# Example residue sets
+# Example residue sets to check if the code is working
 ##M1, R1 = 210, [42, 48, 78, 132, 162, 168]
 ##M2, R2 = 17, [0, 2, 3, 7, 8, 9, 10, 14, 15]
 ##
@@ -98,10 +126,8 @@ with open("signature_29.txt", "r") as f:
 mod29_data = {int(k): v for k, v in mod29_data.items()}
 
 # ----------------- Two-point factoring -----------------
+# just to filter smaller prime factors. just a halfbaked failsafe
 
-
-import math
-import time
 
 def two_point_factor(num):
     
@@ -116,6 +142,9 @@ def two_point_factor(num):
     
 
     # Get residues safely, fallback if missing
+    # Stack the moduli one after another based on the size of N
+    # dont stack too much moduli as it may lead to a CRT combination explosion
+    # Then it is just a trial division with a huge computational overhead
     n_mod_2310 = num % 2310
     residues_2310 = mod2310_data.get(n_mod_2310, list(range(2310)))
 
@@ -128,8 +157,8 @@ def two_point_factor(num):
     residues_13 = mod13_data.get(n_mod_13, list(range(13)))
 
     M_eff, R_eff = merge_residues(M_eff, R_eff, 13, residues_13)
-    print(M_eff, len(R_eff))
-
+    # print(M_eff, len(R_eff)) just to see the CRT in action
+ 
     n_mod_360 = num % 360
     residues_360 = mod360_data.get(n_mod_360, list(range(360)))
 
@@ -148,9 +177,10 @@ def two_point_factor(num):
     b_start = (b_min // step_size) - 1
     start_time = time.perf_counter()
 
-    # ---------------- Optimized Main Loop ----------------
+    # ----------------Simple Main Loop ----------------
     while b_min <= b_max:
-        for i in range(0, num // 3):
+        # just a trial division
+        for i in range(0, num // 3):  #  //3 to debug. remove before uploading.
             p = 3
             if num % p == 0:
                 elapsed = time.perf_counter() - start_time
@@ -185,8 +215,6 @@ primes = [sympy.randprime(10**8, 10**9) for _ in range(50)]
 semiprimes = [random.choice(primes) * random.choice(primes) for _ in range(50)]
 
 
-
-
 #----------------- Factorization and table -----------------
 results = []
 print("--- Starting Factorization ---")
@@ -198,6 +226,8 @@ for N in semiprimes:
     else:
         results.append([N, "None", "-", "-", "-", "-"])
 
+# Just a fancy table to see the results
 # ----------------- Print formatted table -----------------
 headers = ["N", "point", "Factor1", "Factor2", "Time(s)", "Iterations"]
 print(tabulate(results, headers=headers, tablefmt="grid"))
+
