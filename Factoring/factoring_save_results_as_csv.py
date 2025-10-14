@@ -21,7 +21,8 @@ from itertools import product
 from tabulate import tabulate
 from math import gcd
 from functools import reduce
-
+import csv
+from datetime import datetime
 
 """
 ###############################################################################
@@ -348,8 +349,7 @@ for N in semiprimes:
 headers = ["N", "point", "Factor1", "Factor2", "Time(s)","Comb_M", "R","R/M", "Iterations"]
 print(tabulate(results, headers=headers, tablefmt="grid"))
 
-import csv
-from datetime import datetime
+
 
 
 # Save results to CSV with unique filename
