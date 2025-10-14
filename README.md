@@ -44,11 +44,11 @@ feel free to suggest some improvements.
 And all suggestions are welcomed.
 
 # Disclaimer : It is a crude implementation and no consideration was given to
-# optimal run time, this implementation is used only to see if there any flaw
-# in the theory and counter example.
-# due to the assumptions like the prime factors are not divisible by 5 and we have
-# fairly close primes to create the semiprime as we expect in the fermat style algorithms.
-# so a tight bound was used like 10^5 to 10^10 primes only to construct the semiprimes.
-# the program should not run if we put a composite with more than 3 factors. 
-# simply work with moderate length semiprimes N = p*q only. 
+optimal run time, this implementation is used only to see if there any flaw
+in the theory and counter example.
+due to the assumptions like the prime factors are not divisible by 5 and we have
+fairly close primes to create the semiprime as we expect in the fermat style algorithms.
+so a tight bound was used like 10^5 to 10^10 primes only to construct the semiprimes.
+the program should not run if we put a composite with more than 3 factors. 
+simply work with moderate length semiprimes N = p*q only. 
    
