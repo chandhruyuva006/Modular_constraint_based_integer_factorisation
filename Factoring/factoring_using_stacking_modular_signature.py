@@ -71,7 +71,6 @@ so the we only have about  less than 105 residues for r when  N = r mod 210.
 
 so is the factor sum p+q values.  but they are restricted to even further down.
 
-
 """
 
 """
@@ -101,7 +100,11 @@ so if the N mod 4 is 1 then the factor sum is either 0 mod 4 or 2 mod 4.
 But if the N mod 4 is 3 then the factor sum is strictly restricted to just 0 mod 4.
 and we also have one more information about the factors. one factor 1 mod 4 and another 3 mod 4.
 But when the moduli become large so are the combinations and
- this combinatorial information is not so useful in the factoring process.
+this combinatorial information is not so useful in the factoring process.
+
+searching for through primes is hard because we dont know which is prime
+and which is not. but searching for a composite (p+q) is much easy as we 
+know most of the things about it from the modular arithmetic.
 
 But we can use the factor sum information,so we dont to check other numbers 
 while searching in the (2*(sqrt(N)) to N) space for 
