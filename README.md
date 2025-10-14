@@ -35,11 +35,10 @@ But stacking the various smaller m leads to M_eff upto 177657480 in several case
 ### **Step 2: Factorisation**
 
 ### Use the factoring_using_stacking_modular_signature.py file in the Factoring folder
-##### can use other files in the repo but need to edit a few logics and the files dont communicate 
-##### to each other except the txt
-##### files and the factoring_using_stacking_modular_signature.py
-##### in a Dell Inspiron 3558 i3 5005U upto 18 digit odd semiprimes can be factored under 
-##### a second in this crude implementation and 
+can use other files in the repo but need to edit a few logics and the files dont communicate 
+to each other except the txt files and the factoring_using_stacking_modular_signature.py
+in a Dell Inspiron 3558 i3 5005U upto 18 digit odd semiprimes can be factored under 
+a second on most cases in this crude implementation and 
 feel free to suggest some improvements. 
 And all suggestions are welcomed.
 
