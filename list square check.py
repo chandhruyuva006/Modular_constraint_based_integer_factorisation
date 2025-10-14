@@ -7,7 +7,6 @@ from itertools import product
 from tabulate import tabulate
 from math import gcd
 from functools import reduce
-
 def modinv(a, m):
     """
     Compute modular inverse of a modulo m, using Extended Euclidean Algorithm.
