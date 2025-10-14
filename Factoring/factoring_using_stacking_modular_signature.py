@@ -32,7 +32,114 @@ method with a better if (residue in allowed residue) loop loop loop.
 I welcome anyone who could understand the constraints and help me optimise the code. 
                                     Thank You. 
 ############################################################################### 
+
 """
+
+"""
+This code is based on the fact that. 
+for any odd prime p and q they will give either 1 or 3 mod 4.
+for example p = 47 q =61. p = 3 mod 4 and q = 1 mod 4. 
+if the semiprime is made up of factors which are odd.
+then N should be either 1 mod 4 or 3 mod 4.
+so if the N is 3 mod 4 then the factor sum p+q should be divided by 4.
+if the N is 1 mod 4 then the factor sum p+q should be divided by 2.
+
+but here we extended to other composite and primorial moduli.
+"""
+"""
+        any q 
+    m  |  q mod m  |  q mod m
+    ---------------------------
+any  p |(p*q)mod m | (p*q)mod m
+p    p |(p*q)mod m | (p*q)mod m
+
+for the N (mod m) cant expect any value,  (p*q)mod m = N mod m  value is defined based on 
+factors p mod m and q mod m.    
+
+so is the p+q mod m. it is also restricted to a handful of values only.
+
+for example when it is an odd semiprime so the factors should also be odd.
+their sum (p+q) should be always even. 
+we cant expect an odd factor sum. which  is just saying the factor sum is 
+restricted to 0 mod 2.
+
+we can extend to this any chosen and all moduli under N.
+
+lets say an odd semiprime. N =r (mod 210). the r can never be a even number or a multiple of 5.
+if (mod m)N = r is an even number or 5 then the N should be a multiple of 2 or 5.
+so the we only have about  less than 105 residues for r when  N = r mod 210. 
+
+so is the factor sum p+q values.  but they are restricted to even further down.
+
+
+"""
+
+"""
+Let me explain the method using a trivial and well understood case.
+The possibilities of odd semiprime N mod 4 is either 1 or 4.
+
+modular multiplication table for moduli 4
+this table gives us all the possible combinations of p and q and r = N mod 4 space.
+           any q
+       4 | 1 | 3
+     -----------
+any    1 | 1 | 3  -  if N (mod 4) = 3 then the factor sum should be 0.
+p      3 | 1 | 1      -
+                         -
+                            -
+modular addition table for    -
+the moduli 4 in the factor    -
+sum space.                   -  
+                            - 
+the factor sums           -
+       4 | 1 |  3        -
+      -----------       - 
+       1 | 2 |  0 <---   
+       3 | 0 |  2
+       
+so if the N mod 4 is 1 then the factor sum is either 0 mod 4 or 2 mod 4. 
+But if the N mod 4 is 3 then the factor sum is strictly restricted to just 0 mod 4.
+and we also have one more information about the factors. one factor 1 mod 4 and another 3 mod 4.
+But when the moduli become large so are the combinations and
+ this combinatorial information is not so useful in the factoring process.
+
+But we can use the factor sum information,so we dont to check other numbers 
+while searching in the (2*(sqrt(N)) to N) space for 
+the factor sum when using the x^2 - bx +N =0 equation to find factors.
+
+"""
+""" 
+The key fact we can use any moduli to reduce the search space.
+But the problem is when the moduli is a prime like 7,13,1009. 
+on average they give about (m+1)/2 residues. and we can combine multiple 
+the residues of different moduli using CRT as they are coprime all the 
+residue combinations are allowed for the factor sum. But the reduced search space
+vs the CRT combination explosion will nullify the effective factor process.
+
+But when we combine a highly composite moduli like a primorial with a small 
+prime moduli, we will get a bigger M_eff and in most cases some of the residus 
+cancel out in the CRT process due to no possible number which can satisfy 
+both constraints and the allowed factor sum residues will be a tiny fraction
+of the combined modulus. Thus reducing the search space and time.
+This is the heart of the semiprime modular restriction conjecture. 
+
+The previous investigations on this matter may brushed this off because of the 
+fact that we cant combine more and more moduli to get a bigger modulus to 
+reduce the search space because as we add more moduli the residue possibilites
+get out of hand quickly. also the reason previous investigations may have abandoned it 
+because it cant compete with the heuristic algorithms interms of actual run time.
+and also they may tried only prime moduli for reducing the search space which i also
+did in my previous implementations. 
+
+The key lies on the composites and primorials which in combinations can quickly
+lead to the exact factor sum and dont exponentially blow up the combinations as 
+some residues which are always incompatible during the CRT process. 
+
+"""
+
+
+
+
 # modinv never failed during the 1000s of runs. But may fail sometime due to the 
 # combination of two incompatible composite moduli.
 # we can stack any moduli but primorial moduli filters better.
@@ -190,7 +297,7 @@ def two_point_factor(num):
             base_b = (b_start + i) * step_size
 
             iterations += 1
-            
+            # accelerated fermat method using the modular constraint information
             for r in R_eff:
                 iterations += 1
                 b = base_b + r
