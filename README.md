@@ -43,7 +43,8 @@ But stacking the various smaller m leads to M_eff upto 177657480 in several case
 feel free to suggest some improvements. 
 And all suggestions are welcomed.
 
-# Disclaimer : It is a crude implementation and no consideration was given to
+## Disclaimer : 
+It is a crude implementation and no consideration was given to
 optimal run time, this implementation is used only to see if there any flaw
 in the theory and counter example.
 due to the assumptions like the prime factors are not divisible by 5 and we have
