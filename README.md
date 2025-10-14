@@ -51,4 +51,8 @@ fairly close primes to create the semiprime as we expect in the fermat style alg
 so a tight bound was used like 10^5 to 10^10 primes only to construct the semiprimes.
 the program should not run if we put a composite with more than 3 factors. 
 simply work with moderate length semiprimes N = p*q only. 
+to vaguely put it. the primes are random but not the semiprimes and composites. they leave a trail
+to its factors in the modular arithmetic space. but for a large N to reach the true
+factor sum with this method is computationally not feasible but we know the factor sum is 
+there in that region and we know the properties of the factor sum. 
    
