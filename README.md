@@ -1,5 +1,5 @@
 # Modular Patterns in Semiprimes: Deterministic Congruence Framework for Factorization
-
+https://doi.org/10.5281/zenodo.17352370 
 ##  Overview
 This repository accompanies the paper  
 **“Modular Patterns in Semiprimes: Empirical Observations and Conjectures on Factor Sums and Deterministic Congruence Patterns in Semiprimes Enabling Optimised Factorization.”**
