@@ -14,7 +14,7 @@ The entire framework is implemented in **pure Python (standard library only)** â
 Once the theory (just a simple modular math with a matrix) is understood, then the implementation is pretty straightforward. 
 
 ### Files
-#### use the factoring_using_stacking_modular_signature.py file and 
+#### use the factoring_using_stacking_modular_signature.py or trial inside loop.py file and 
 #### mod_signature_synthetic.ipynb 
 i have described the theory as much i can possible in the comments.
 
