@@ -15,7 +15,9 @@ Once the theory (just a simple modular math with a matrix) is understood, then t
 
 ### Files
 #### use the factoring_using_stacking_modular_signature.py or trial inside loop.py file and 
-#### mod_signature_synthetic.ipynb 
+#### mod_signature_synthetic.ipynb file is broken (fixing it)
+**incorrectly included noncoprime residues in the calculation. which will increase the computational
+overhead during CRT mergers**
 i have described the theory as much i can possible in the comments.
 
 
